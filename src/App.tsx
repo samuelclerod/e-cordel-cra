@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { CssBaseline, ThemeProvider } from "@material-ui/core";
+import { useMemo } from "react";
+import Navbar from "./components/Navbar";
+import { AppProvider } from "./contexts";
+import { ColorModeProvider } from "./contexts/ColorModeProvider";
+import { useColorMode } from "./hooks/useColorMode";
+import { Routes } from "./routes";
+import { getTheme } from "./theme";
 
-function App() {
+export function App() {
+  const { mode } = useColorMode();
+
+  const theme = useMemo(() => getTheme(mode), [mode]);
+
+  console.log(mode);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Navbar />
+      <Routes />
+    </ThemeProvider>
   );
 }
-
-export default App;
