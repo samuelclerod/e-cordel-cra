@@ -1,32 +1,41 @@
-import { Button } from "@material-ui/core";
-import { LockOutlined, LockOpenOutlined } from "@material-ui/icons";
-// import { useRouter } from "next/router";
-import { useCallback } from "react";
+import { Button, useTheme } from "@material-ui/core";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { useHistory } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 export function AuthButton() {
-  // const router = useRouter();
+  const history = useHistory();
   const { user, signOut } = useAuth();
+  const theme = useTheme();
 
-  const login = useCallback(() => {
-    // router.push("/login");
-  }, [user]);
+  const login = () => {
+    history.push("/login");
+  };
 
-  const logout = useCallback(() => {
+  const logout = () => {
     signOut();
-    // router.push("/");
-  }, [user]);
+    history.push("/");
+  };
 
   if (!user)
     return (
-      <Button color="inherit" endIcon={<FiLogIn />} onClick={login}>
+      <Button
+        color="inherit"
+        endIcon={<FiLogIn />}
+        onClick={login}
+        sx={{ marginLeft: theme.spacing(2) }}
+      >
         Login
       </Button>
     );
 
   return (
-    <Button color="inherit" endIcon={<FiLogOut />} onClick={logout}>
+    <Button
+      color="inherit"
+      endIcon={<FiLogOut />}
+      onClick={logout}
+      sx={{ marginLeft: theme.spacing(2) }}
+    >
       Logout
     </Button>
   );

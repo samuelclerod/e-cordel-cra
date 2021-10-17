@@ -12,6 +12,7 @@ import Hero from "../components/Hero";
 import CardCordel from "../components/CordelCard";
 import { CordelCardSkeleton } from "../components/CordelCard/CordelCardSkeleton";
 import { FiSearch } from "react-icons/fi";
+import Navbar from "../components/Navbar";
 
 interface Cordel {
   id: number;
@@ -25,23 +26,24 @@ interface CordelRequest {
 }
 
 export default function Home() {
-  // const router = useRouter();
   const theme = useTheme();
   const [searchTitle, setSearchTitle] = useState("");
 
-  const { data } = useFetch<CordelRequest>(`cordels?title=${searchTitle}`);
+  const { data } = useFetch<CordelRequest>(
+    `cordels/summaries?title=${searchTitle}`
+  );
+
+  console.log(data);
 
   return (
     <>
+      <Navbar />
       <Hero
         title="Bem vindo"
         text="Quer contribuir ou conhecer mais sobre o projeto e-cordel?
         visite nossa pagina e saiba mais."
         actionText="Visite nosso site"
-        // action={() => router.push("https://ecordel.com.br/")}
-        action={() => {
-          console.log("ação");
-        }}
+        action={() => (window.location.href = "https://ecordel.com.br/")}
       />
       <Container
         sx={{

@@ -31,7 +31,7 @@ export default function Navbar() {
             e-cordel
           </Typography>
           <IconButton color="inherit" onClick={toggleColorMode}>
-            {mode == "dark" ? <FiSun /> : <FiMoon />}
+            {mode === "dark" ? <FiSun /> : <FiMoon />}
           </IconButton>
           <AuthButton />
         </Toolbar>
