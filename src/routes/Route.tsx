@@ -16,19 +16,14 @@ export const Route: React.FC<RouteProps> = ({
   ...rest
 }) => {
   const { user } = useAuth();
+  if (!isPrivate)
+    return <ReactDOMRoute {...rest} render={() => <Component />} />;
+
   return (
     <ReactDOMRoute
       {...rest}
       render={() => {
-        return isPrivate === !!user ? (
-          <Component />
-        ) : (
-          <Redirect
-            to={{
-              pathname: isPrivate ? "/login" : "/",
-            }}
-          />
-        );
+        return !!user ? <Component /> : <Redirect to={"/login"} />;
       }}
     />
   );

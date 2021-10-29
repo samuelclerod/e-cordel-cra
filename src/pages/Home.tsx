@@ -12,7 +12,6 @@ import Hero from "../components/Hero";
 import CardCordel from "../components/CordelCard";
 import { CordelCardSkeleton } from "../components/CordelCard/CordelCardSkeleton";
 import { FiSearch } from "react-icons/fi";
-import Navbar from "../components/Navbar";
 
 interface Cordel {
   id: number;
@@ -37,7 +36,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
       <Hero
         title="Bem vindo"
         text="Quer contribuir ou conhecer mais sobre o projeto e-cordel?

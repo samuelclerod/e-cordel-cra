@@ -6,11 +6,11 @@ export const getTheme = (mode: ModeTypes = "light") => {
     palette: {
       mode,
       primary: {
-        main: "#556cd6",
+        main: "#4caf50",
       },
-      // secondary: {
-      //   main: '#19857b',
-      // },
+      secondary: {
+        main: "#ab003c",
+      },
       // error: {
       //   main: red.A400,
       // },
